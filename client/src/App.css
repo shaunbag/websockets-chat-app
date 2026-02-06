@@ -1,0 +1,209 @@
+#root {
+  text-align: center;
+}
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-window {
+  background: linear-gradient(340deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgb(145, 117, 35) 100%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow:0 0 10px rgba(0,0,0,0.3);
+  border: 3px solid rgba(116, 226, 217, 0.3);
+}
+
+.app-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  z-index: 5;
+}
+
+.app-logo {
+  height: 56px;
+  width: auto;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.app-layout {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 72px; /* space so chat does not sit under the header */
+  box-sizing: border-box;
+}
+
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 80vh;
+  width: 70vw;
+  margin: 0 auto;
+  text-align: left;
+  box-sizing: border-box;
+
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* IE / Edge */
+  -ms-overflow-style: none;
+}
+
+.chat-window::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.chat-bubble-container{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-bubble {
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
+  width: 80%;
+  box-shadow: '10px 5px 10px 1px black';
+}
+
+.reactions{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: -5;
+  border-radius: 10px;
+  padding: 0 5px;
+}
+
+.input{
+  background-color: rgb(53, 129, 85);
+  padding: 10px;
+}
+
+.custom-select {
+  height: 36px;             
+  padding: 4px 12px;         
+  font-size: 14px;
+  background-color: rgb(87, 199, 190);    
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+  outline: none;
+  margin: auto 10px;
+}
+
+.logout-button {
+  background-color: transparent;
+  color: rgb(194, 80, 80);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: auto 10px;
+}
+.logout-button:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+.logout-button:focus {
+  outline: none;
+}
+.login-toggle-button {
+  background-color: transparent;
+  color: rgb(194, 80, 80);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: auto 10px;
+}
+.login-toggle-button:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+.login-toggle-button:focus {
+  outline: none;
+}
+.input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 10px 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chat-input {
+  width: 100%;
+  max-width: 800px;
+  padding: 16px;
+  background-color: rgb(87, 199, 190);
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px; 
+}
+
+@media (max-width: 768px) {
+  html, body, #root {
+    height: auto;
+  }
+  .app-header {
+    position: static;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .app-layout {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 16px;
+    padding-bottom: 80px; 
+    align-items: flex-start; 
+  }
+
+  .chat-window {
+    width: 95vw;
+    height: auto;
+    max-height: calc(100vh - 210px); 
+  }
+
+  .login-window {
+    width: 90vw;
+    max-width: 300px;
+  }
+
+  .app-logo {
+    height: 64px;
+  }
+
+  .app-title {
+    font-size: 1.4rem;
+  }
+  .input-container {
+    width: 100%;
+    padding: 8px 10px;
+  }
+}
