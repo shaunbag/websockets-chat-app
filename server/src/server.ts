@@ -83,16 +83,25 @@ wss.on('connection', (ws: WebSocket, req: Request) => {
 
 });
 
+setInterval(() => {
+    wss.clients.forEach((client: WebSocket) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send('heartbeat');
+      }
+    });
+}, 2000)
+
+
 /**HTTP Api Requests */
 
 
 // this is just to verify the server is running 
-app.get('/', (req: Request, res: Response) => {
+app.get('/api/', (req: Request, res: Response) => {
   res.status(200).send('Server Is Up!');
 });
 
 // Initial registering of users
-app.post('/register', async (req: Request, res: Response) => {
+app.post('/api/register', async (req: Request, res: Response) => {
   const { name, password } = req.body;
   if(!name || !password) {
     return res.status(400).json({response: 'Name and Password Required'});
@@ -113,7 +122,7 @@ app.post('/register', async (req: Request, res: Response) => {
 })
 
 // login post 
-app.post('/login', async (req: Request, res: Response) => {
+app.post('/api/login', async (req: Request, res: Response) => {
   console.log(req.body)
   const { name, password } = req.body;
   if(!name || !password) {

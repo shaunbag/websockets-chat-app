@@ -1,10 +1,6 @@
-import bcrypt from 'bcrypt'
-import Database from 'better-sqlite3'
-import path from "path";
-
-// Ensure database file is in /app/data inside container
-const dbPath = path.resolve(__dirname, "../data/mydb.sqlite");
-export const db = new Database(dbPath)
+import bcrypt from 'bcrypt';
+import Database from 'better-sqlite3';
+export const db = new Database('db.sqlite')
 
 // create the users table here 
 db.prepare(`
