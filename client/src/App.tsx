@@ -1,9 +1,8 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import './App.css'
 import ChatBubble from './components/ChatBubble'
 import { useUserStore } from './store'
 import LoginPage from './components/LoginPage'
-import bg from './assets/background.jpg';
 import ChatInput from './components/ChatInput'
 import type { Message, MessageType, User } from './Types'
 
@@ -14,7 +13,11 @@ function App() {
   const [users, setUsers] = useState<string[]>([])
   const [connected, setConnected] = useState<boolean>(false)
   const wsRef = useRef<WebSocket | null>(null);
+  const windowRef = useRef(null);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   function connect(jwt: string) {
     const ws = new WebSocket(`${import.meta.env.VITE_WEBSOCKET_URL}?token=${jwt}`);
@@ -79,8 +82,17 @@ function App() {
     )
   }
 
+  function scrollToBottom(){
+    if(windowRef.current){
+      const element = windowRef.current as HTMLDivElement;
+      requestAnimationFrame(() => {
+        element.scrollTop = element.scrollHeight;
+      });
+    }
+  }
+
   return (
-    <main style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundRepeat: 'none', minHeight: '100vh' }}>
+    <main style={{ minHeight: '100vh' }}>
       <div className="app-header">
         <img src="/images/logo.png" alt="logo" className="app-logo" />
         <h2 className="app-title">Chatty McChatface</h2>
@@ -109,7 +121,7 @@ function App() {
         }
       </div>
       <div className="app-layout">
-        <div className="chat-window">
+        <div className="chat-window" ref={windowRef}>
           {
             messages.map(msg => (
               <ChatBubble key={msg.createdAt.toString()} message={msg} updateMessage={updateMessage} wsRef={wsRef}/>
