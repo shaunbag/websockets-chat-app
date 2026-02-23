@@ -1,4 +1,4 @@
-import EmojiPicker, { type EmojiClickData } from "emoji-picker-react";
+import EmojiPicker, { Theme, type EmojiClickData } from "emoji-picker-react";
 import { useUserStore } from "../store";
 import { useState } from "react";
 import type { MessageType } from "../Types";
@@ -16,6 +16,7 @@ export default function ChatInput({sendMessage, connected}: Props){
 
     function handleEmoji(emojiObject: EmojiClickData){
         setMessageToSend(prev => prev + " " + emojiObject.emoji);
+        setShowEmojis(false);
     }
 
     return(
@@ -36,7 +37,7 @@ export default function ChatInput({sendMessage, connected}: Props){
             />
             <button onClick={() => setShowEmojis(prev => !prev)}>Mojis</button>
             <div style={{position: 'absolute', bottom: 0}}>
-                <EmojiPicker open={showEmojis} onEmojiClick={(emojiObject) => {
+                <EmojiPicker theme={Theme.DARK} open={showEmojis} onEmojiClick={(emojiObject) => {
                                 handleEmoji(emojiObject)}} />
             </div>
             

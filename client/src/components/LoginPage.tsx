@@ -35,8 +35,7 @@ export default function LoginPage({ connect }: Props) {
             }
 
             setResponse(data.response)
-            setUsername('')
-            setPassword('')
+            loginAndConnect(name, password)
         } catch (err) {
             console.log(err)
         }
