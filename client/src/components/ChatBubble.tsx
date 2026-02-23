@@ -1,4 +1,4 @@
-import EmojiPicker, { type EmojiClickData } from 'emoji-picker-react';
+import EmojiPicker, { Theme, type EmojiClickData } from 'emoji-picker-react';
 import type { Message, Reaction } from '../Types';
 import { useState } from 'react';
 
@@ -64,7 +64,7 @@ export default function ChatBubble({ message, updateMessage, wsRef }: Props) {
                         </div>
 
                 <div style={{ position: 'absolute', top: 0, zIndex: 5 }}>
-                    <EmojiPicker open={showEmojis} onEmojiClick={(emojiObject) => {
+                    <EmojiPicker theme={Theme.DARK} open={showEmojis} onEmojiClick={(emojiObject) => {
                         addReaction(emojiObject);
                     }} />
                 </div>
