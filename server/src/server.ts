@@ -86,7 +86,7 @@ wss.on('connection', (ws: WebSocket, req: Request) => {
 setInterval(() => {
     wss.clients.forEach((client: WebSocket) => {
       if (client.readyState === WebSocket.OPEN) {
-        client.send('heartbeat');
+        client.send(JSON.stringify({type:'heartbeat'}));
       }
     });
 }, 2000)
