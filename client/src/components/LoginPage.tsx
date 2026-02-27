@@ -80,7 +80,7 @@ export default function LoginPage({ connect }: Props) {
             <hr />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                 <img src="/images/logo.png" alt="logo" width={80} />
-                <button className="login-toggle-button" onClick={() => setToggleView(prev => !prev)}>{toggleView ? "Not Registered Click Here?" : "Back To Login"}</button>
+                <button className="login-toggle-button" onClick={() => setToggleView(prev => !prev)}>{toggleView ? <p>Not Registered <span style={{color:"red"}}>Click Here</span></p>: <p>Back To Login</p>}</button>
                 {
                     toggleView ?
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
@@ -108,7 +108,7 @@ export default function LoginPage({ connect }: Props) {
                                         autoComplete="new-password"
                                         spellCheck="false"
                                         onChange={(e) => setPassword(e.target.value)} className="input" />
-                                    <button type='submit'>Login</button>
+                                    <button type='submit' style={{backgroundColor: '#5aa5b8'}}>Login</button>
                                 </div>
 
                             </form>
