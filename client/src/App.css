@@ -18,6 +18,7 @@ html, body, #root {
   padding: 20px;
   box-shadow:0 0 10px rgba(0,0,0,0.3);
   border: 3px solid rgba(116, 226, 217, 0.3);
+  max-width: 375px;
 }
 
 .app-header {
@@ -84,7 +85,7 @@ html, body, #root {
   padding: 2px;
   margin: 12px;
   width: 80%;
-  font-size: x-1.3rem;
+  font-size: 1.3rem;
 }
 
 .reactions{
@@ -170,6 +171,12 @@ html, body, #root {
   border-radius: 8px;
   box-sizing: border-box;
   font-size: 16px; 
+}
+
+.url-input{
+  background-color: black;
+  padding: 5px;
+  border-radius: 12px;
 }
 
 @media (max-width: 768px) {
