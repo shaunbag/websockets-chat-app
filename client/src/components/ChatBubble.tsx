@@ -35,11 +35,25 @@ export default function ChatBubble({ message, updateMessage, wsRef }: Props) {
         wsRef.current?.send(JSON.stringify(messageToChange))
     }
 
+
     return (
         <div className='chat-bubble-container' onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                 <div className='chat-bubble'>
                   
                     <strong style={{ marginTop: '10px' }}>{message.from}:</strong>
+                    <br/>
+                    {
+                        message.images.map(image => {
+                            let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
+
+                            if (image === null || image.length === 0) {
+                                return null;
+                            }
+                            if(regex.test(image)){
+                                return <img src={image} alt='not found' width={300}/>
+                            }
+                        })
+                    }
                     <p style={{ marginTop: '10px' }}>{message.content}</p>
                     <div className='reactions' style={{
                         backgroundColor: 'transparent',
@@ -63,7 +77,7 @@ export default function ChatBubble({ message, updateMessage, wsRef }: Props) {
                                 onClick={() => setShowEmojis(true)}>🤪</button>
                         </div>
 
-                <div style={{ position: 'absolute', top: 0, zIndex: 5 }}>
+                <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
                     <EmojiPicker theme={Theme.DARK} open={showEmojis} onEmojiClick={(emojiObject) => {
                         addReaction(emojiObject);
                     }} />

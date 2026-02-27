@@ -84,6 +84,7 @@ html, body, #root {
   padding: 2px;
   margin: 12px;
   width: 80%;
+  font-size: x-1.3rem;
 }
 
 .reactions{
@@ -124,25 +125,26 @@ html, body, #root {
   position: fixed;
   top: 10px;
   right: 10px;
+  z-index: 1;
 }
 .logout-button:hover {
-  text-decoration: underline;
   background-color: transparent;
+  transform: none;
 }
 .logout-button:focus {
   outline: none;
 }
 .login-toggle-button {
   background-color: transparent;
-  color: rgb(194, 80, 80);
+  color: white;
   border: none;
   cursor: pointer;
   outline: none;
   margin: auto 10px;
 }
 .login-toggle-button:hover {
-  text-decoration: underline;
   background-color: transparent;
+  transform: scale(1);
 }
 .login-toggle-button:focus {
   outline: none;

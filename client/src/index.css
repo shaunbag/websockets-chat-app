@@ -30,17 +30,18 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid greenyellow;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #5aa5b8;
+  background-color: transparent;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 1px;
 }
 button:hover {
-  background-color: #58c9e6;
+  transform: scale(1.05);
 }
 button:focus,
 button:focus-visible {
