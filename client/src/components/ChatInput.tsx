@@ -77,8 +77,8 @@ export default function ChatInput({ sendMessage, connected }: Props) {
             </div>
             {
                 showImageInput && (
-                    <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} ref={attachFileRef}>
-                        <input type='text' value={image} onChange={(e) => setImage(e.target.value)} />
+                    <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column' }} ref={attachFileRef}>
+                        <input placeholder="Enter URL..." className="url-input" type='text' value={image} onChange={(e) => setImage(e.target.value)} />
                         <button onClick={() => {
                             setImages(prev => [...prev, image]);
                             setImage('');

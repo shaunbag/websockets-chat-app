@@ -112,6 +112,7 @@ export default function LoginPage({ connect }: Props) {
                                 </div>
 
                             </form>
+                            <p>Disclaimer: this site is not for private messages, although no message history is saved anywhere, the chat is global so whoever signs in sees all</p>
                         </div>
                         :
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
