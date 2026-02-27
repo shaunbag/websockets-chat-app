@@ -52,6 +52,8 @@ function App() {
       case 'reaction':
           updateMessage(message)
         break;
+      case 'heartbeat':
+        break;
       default:
         console.log("Invalid Message")
         return
@@ -63,13 +65,14 @@ function App() {
     setUsers(prev => [...prev, user])
   }
 
-  const sendMessage = (type: MessageType, name: string, message: string) => {
+  const sendMessage = (type: MessageType, name: string, message: string, images: string[]) => {
     const fullMessage: Message = {
       type: type,
       from: name,
       content: message,
       createdAt: Date.now(),
-      reactions: []
+      reactions: [],
+      images:images
     }
     wsRef.current?.send(JSON.stringify(fullMessage));
   }
