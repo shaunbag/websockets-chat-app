@@ -1,4 +1,4 @@
-export type MessageType = 'message' | 'users' | 'addUser' | 'reaction';
+export type MessageType = 'message' | 'users' | 'addUser' | 'reaction' | 'heartbeat';
 
 export type Reaction = {
     emoji: string;
@@ -11,6 +11,7 @@ export type Message = {
   content: string;
   createdAt: number;
   reactions: Reaction[];
+  images: string[];
 }
 
 export type User = {

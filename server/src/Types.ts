@@ -9,4 +9,5 @@ export type Message = {
     content: string;
     createdAt: Date;
     reactions: string[];
+    images:string[];
 }
