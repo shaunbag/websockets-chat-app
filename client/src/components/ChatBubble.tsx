@@ -78,6 +78,7 @@ export default function ChatBubble({ message, updateMessage, wsRef }: Props) {
                                     transform: 'translateY(20px)',
                                     display: hovered ? 'inline-block' : 'none',
                                     position: 'absolute',
+                                    zIndex: 20
                                 }}
                                 onClick={() => setShowEmojis(true)}>🤪</button>
                         </div>
