@@ -43,14 +43,19 @@ export default function ChatBubble({ message, updateMessage, wsRef }: Props) {
                     <strong style={{ marginTop: '10px' }}>{message.from}:</strong>
                     <br/>
                     {
-                        message.images.map(image => {
+                        message.media.map(item => {
                             let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
 
-                            if (image === null || image.length === 0) {
+                            let vidregex = new RegExp(/(youtube)/)
+
+                            if (item === null || item.length === 0) {
                                 return null;
                             }
-                            if(regex.test(image)){
-                                return <img src={image} alt='not found' width={300}/>
+                            if(vidregex.test(item)){
+                                return <iframe src={item.replace("watch?v=","embed/")}/>
+                            }
+                            if(regex.test(item)){
+                                return <img src={item} alt='not found' width={300}/>
                             }
                         })
                     }
@@ -77,7 +82,7 @@ export default function ChatBubble({ message, updateMessage, wsRef }: Props) {
                                 onClick={() => setShowEmojis(true)}>🤪</button>
                         </div>
 
-                <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                <div className="emoji-picker" style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
                     <EmojiPicker theme={Theme.DARK} open={showEmojis} onEmojiClick={(emojiObject) => {
                         addReaction(emojiObject);
                     }} />
