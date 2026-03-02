@@ -72,7 +72,7 @@ function App() {
       content: message,
       createdAt: Date.now(),
       reactions: [],
-      images:images
+      media:images
     }
     wsRef.current?.send(JSON.stringify(fullMessage));
   }
