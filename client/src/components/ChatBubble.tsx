@@ -77,13 +77,12 @@ export default function ChatBubble({ message, updateMessage, wsRef }: Props) {
                                     backgroundColor: 'transparent',
                                     transform: 'translateY(20px)',
                                     display: hovered ? 'inline-block' : 'none',
-                                    position: 'absolute',
-                                    zIndex: 20
+                                    position: 'absolute'
                                 }}
                                 onClick={() => setShowEmojis(true)}>🤪</button>
                         </div>
 
-                <div className="emoji-picker" style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                <div className="emoji-picker" style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 20 }}>
                     <EmojiPicker theme={Theme.DARK} open={showEmojis} onEmojiClick={(emojiObject) => {
                         addReaction(emojiObject);
                     }} />
