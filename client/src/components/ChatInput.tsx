@@ -83,7 +83,7 @@ export default function ChatInput({ sendMessage, connected }: Props) {
                             setImages(prev => [...prev, image]);
                             setImage('');
                             setShowImageInput(false);
-                        }}>Attach Image</button>
+                        }}>Attach Image/Video URL</button>
                     </div>
                 )
             }

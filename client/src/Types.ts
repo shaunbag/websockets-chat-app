@@ -11,7 +11,7 @@ export type Message = {
   content: string;
   createdAt: number;
   reactions: Reaction[];
-  images: string[];
+  media: string[];
 }
 
 export type User = {
